@@ -1,0 +1,50 @@
+// Modelo relacional - Encuesta sobre la atencion
+// Regenerar con: dot -Tpng modelo_relacional.dot -o modelo_relacional.png
+digraph modelo_relacional {
+  graph [rankdir=TB, nodesep=1.2, ranksep=1.2, bgcolor="white", fontname="Helvetica"];
+  node  [shape=plaintext, fontname="Helvetica"];
+  edge  [color="#7a7a7a", arrowsize=0.9, penwidth=1.2];
+
+  usuario [label=<
+    <TABLE BORDER="1" COLOR="#9bbce0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="8">
+      <TR><TD BGCOLOR="#c9ddf5"><FONT POINT-SIZE="16" COLOR="#13314f"><B>usuario</B></FONT></TD></TR>
+      <TR><TD BGCOLOR="#eaf2fc" ALIGN="LEFT"><FONT COLOR="#1f4e79">id_usuario BIGINT &#8226; PK</FONT></TD></TR>
+      <TR><TD BGCOLOR="#eaf2fc" ALIGN="LEFT"><FONT COLOR="#1f4e79">nombre VARCHAR(100) &#8226; NOT NULL</FONT></TD></TR>
+      <TR><TD BGCOLOR="#eaf2fc" ALIGN="LEFT"><FONT COLOR="#1f4e79">correo VARCHAR(150) &#8226; UNIQUE</FONT></TD></TR>
+      <TR><TD BGCOLOR="#eaf2fc" ALIGN="LEFT"><FONT COLOR="#1f4e79">clave VARCHAR(255) &#8226; NOT NULL</FONT></TD></TR>
+      <TR><TD BGCOLOR="#eaf2fc" ALIGN="LEFT"><FONT COLOR="#1f4e79">edad TINYINT &#8226; NULL</FONT></TD></TR>
+      <TR><TD BGCOLOR="#eaf2fc" ALIGN="LEFT"><FONT COLOR="#1f4e79">sexo VARCHAR(20) &#8226; NULL</FONT></TD></TR>
+      <TR><TD BGCOLOR="#eaf2fc" ALIGN="LEFT"><FONT COLOR="#1f4e79">rol VARCHAR(20) &#8226; NOT NULL &#8226; DEFAULT 'usuario'</FONT></TD></TR>
+    </TABLE>>];
+
+  pregunta [label=<
+    <TABLE BORDER="1" COLOR="#e3bd84" CELLBORDER="0" CELLSPACING="0" CELLPADDING="8">
+      <TR><TD BGCOLOR="#f8dcb0"><FONT POINT-SIZE="16" COLOR="#5c3a0c"><B>pregunta</B></FONT></TD></TR>
+      <TR><TD BGCOLOR="#fdf0dd" ALIGN="LEFT"><FONT COLOR="#7a4f10">id_pregunta BIGINT &#8226; PK</FONT></TD></TR>
+      <TR><TD BGCOLOR="#fdf0dd" ALIGN="LEFT"><FONT COLOR="#7a4f10">pregunta_texto VARCHAR(255)</FONT></TD></TR>
+    </TABLE>>];
+
+  encuesta [label=<
+    <TABLE BORDER="1" COLOR="#9bd3ad" CELLBORDER="0" CELLSPACING="0" CELLPADDING="8">
+      <TR><TD BGCOLOR="#c7ead4"><FONT POINT-SIZE="16" COLOR="#134a2b"><B>encuesta</B></FONT></TD></TR>
+      <TR><TD BGCOLOR="#e9f7ef" ALIGN="LEFT"><FONT COLOR="#1f5e3a">id_encuesta BIGINT &#8226; PK</FONT></TD></TR>
+      <TR><TD BGCOLOR="#e9f7ef" ALIGN="LEFT"><FONT COLOR="#1f5e3a">id_usuario BIGINT &#8226; FK</FONT></TD></TR>
+      <TR><TD BGCOLOR="#e9f7ef" ALIGN="LEFT"><FONT COLOR="#1f5e3a">is_ok BOOLEAN &#8226; DEFAULT FALSE</FONT></TD></TR>
+    </TABLE>>];
+
+  respuesta [label=<
+    <TABLE BORDER="1" COLOR="#b3acec" CELLBORDER="0" CELLSPACING="0" CELLPADDING="8">
+      <TR><TD BGCOLOR="#d6d2f5"><FONT POINT-SIZE="16" COLOR="#2a2160"><B>respuesta</B></FONT></TD></TR>
+      <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_respuesta BIGINT &#8226; PK</FONT></TD></TR>
+      <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_encuesta BIGINT &#8226; FK</FONT></TD></TR>
+      <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_pregunta BIGINT &#8226; FK</FONT></TD></TR>
+      <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">respuesta VARCHAR(255)</FONT></TD></TR>
+    </TABLE>>];
+
+  { rank=same; usuario; pregunta; }
+  { rank=same; encuesta; respuesta; }
+
+  usuario  -> encuesta;
+  pregunta -> respuesta;
+  encuesta -> respuesta;
+}
