@@ -1,4 +1,4 @@
-# [Encuesta sobre la atencón]
+# [Encuesta sobre la atención]
 [Sistema de encuesta que pregunta sobre cómo ciertas redes sociales y videojuegos, diseñados para mantenerte en su ciclo de uso mediante recompensas constantes, han influido en tus hábitos de atención y concentración.]
 
 ## Stack
