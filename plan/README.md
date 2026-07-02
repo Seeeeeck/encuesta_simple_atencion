@@ -21,7 +21,7 @@ ve métricas y gestiona usuarios.
 - `usuario` — id_usuario, nombre, correo (unique), clave (cifrada), edad, sexo, **rol** (`usuario`/`admin`).
 - `encuesta` — id_encuesta, id_usuario (FK), is_ok (bool, default false). Una instancia por usuario.
 - `pregunta` — id_pregunta, pregunta_texto. Set fijo, precargado por seeder.
-- `respuesta` — id_respuesta, id_encuesta (FK), id_pregunta (FK), respuesta.
+- `respuesta` — id_respuesta, id_encuesta (FK), id_pregunta (FK), respuesta (SMALLINT, valor 1–5, CHECK 1..5).
 
 ## Convenciones clave (de `CLAUDE.md`)
 - `camelCase` para variables y funciones; principios SOLID.

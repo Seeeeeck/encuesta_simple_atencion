@@ -6,8 +6,9 @@ cada usuario y editar/eliminar usuarios. Consume `/api/admin/*` (fase 05).
 
 ## Pasos
 1. Ruta privada `src/pages/Admin/` accesible solo si el usuario tiene `rol = 'admin'` (si no, redirige).
-2. **Dashboard de métricas** (`GET /api/admin/metricas`): visualizaciones simples (respuestas por
-   pregunta, distribución por edad/sexo, % completadas).
+2. **Dashboard de métricas** (`GET /api/admin/metricas`): visualizaciones simples — **promedio por
+   pregunta (1–5)** y **distribución de respuestas 1–5** por pregunta, distribución por edad/sexo,
+   % completadas.
 3. **Lista de usuarios** (`GET /api/admin/usuarios`) con paginación y búsqueda.
 4. **Detalle de respuestas** de un usuario (`GET /api/admin/usuarios/{id}/respuestas`).
 5. **Editar** usuario (`PUT`) y **eliminar** usuario (`DELETE`) con confirmación.

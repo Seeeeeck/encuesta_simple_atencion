@@ -5,7 +5,8 @@ Endpoints solo para `rol = admin`: ver métricas de la encuesta, listar usuarios
 cada usuario, editar y eliminar usuarios. Proteger con middleware de rol.
 
 ## Endpoints (bajo `/api/admin`, requieren `auth:sanctum` + middleware `EsAdmin`)
-- `GET    /metricas` — métricas agregadas (respuestas por pregunta, % por edad/sexo, completadas).
+- `GET    /metricas` — métricas agregadas: **promedio (AVG) por pregunta** y **distribución de valores 1–5**
+  por pregunta, % por edad/sexo, completadas.
 - `GET    /usuarios` — listado de usuarios (paginado).
 - `GET    /usuarios/{id}/respuestas` — encuesta + respuestas de un usuario.
 - `PUT    /usuarios/{id}` — editar nombre, clave, edad, sexo, correo (y rol si se confirma).
@@ -13,7 +14,9 @@ cada usuario, editar y eliminar usuarios. Proteger con middleware de rol.
 
 ## Pasos
 1. Middleware `EsAdmin` que verifica `rol === 'admin'` (registrar en Kernel) → `403` si no.
-2. `Admin/MetricasController` — consultas agregadas (agrupar por pregunta, edad, sexo, `is_ok`).
+2. `Admin/MetricasController` — consultas agregadas: como `respuesta` es numérica (1–5), calcular
+   `AVG(respuesta)` y conteo por valor (distribución 1–5) agrupando por pregunta; además agrupar por
+   edad, sexo, `is_ok`.
 3. `Admin/UsuarioController` — index, respuestas, update, destroy.
 4. Validación en update (correo único excluyendo al propio usuario; clave hasheada si cambia).
 5. Registrar rutas con grupo `prefix('admin')->middleware(['auth:sanctum','es_admin'])`.

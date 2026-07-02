@@ -7,7 +7,7 @@
 - EL usuario puede eliminar la cuenta
 - El usuario puede crear e iniciar la cuenta con google
 - El usuario puede iniciar una encuesta
-- El usuario puede responder preguntas
+- El usuario puede responder preguntas del 1 al 5
 - El usuario puede volver a preguntas anteriores para cambiar la respuesta
 - El usuario puede enviar la encuesta
 - El usuario puede revisar si terminó la encuesta

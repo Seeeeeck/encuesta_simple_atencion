@@ -38,7 +38,7 @@ digraph modelo_relacional {
       <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_respuesta BIGINT &#8226; PK</FONT></TD></TR>
       <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_encuesta BIGINT &#8226; FK</FONT></TD></TR>
       <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_pregunta BIGINT &#8226; FK</FONT></TD></TR>
-      <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">respuesta VARCHAR(255)</FONT></TD></TR>
+      <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">respuesta SMALLINT &#8226; CHECK (respuesta BETWEEN 1 AND 5)</FONT></TD></TR>
     </TABLE>>];
 
   { rank=same; usuario; pregunta; }

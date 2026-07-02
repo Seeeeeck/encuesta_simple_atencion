@@ -16,14 +16,14 @@ atrás a cambiar respuestas), envíe la encuesta y consulte su estado. Incluir l
 ## Pasos
 1. `EncuestaController` (Api): iniciar, show, estado, enviar.
 2. `RespuestaController` (Api): upsert de respuesta por pregunta (vuelta atrás = volver a `PUT`).
-3. Validar que la pregunta exista y la respuesta cumpla formato; impedir editar si `is_ok = true`
+3. Validar que la pregunta exista y la respuesta sea un **entero entre 1 y 5**; impedir editar si `is_ok = true`
    (o permitir reapertura según se confirme con el usuario).
 4. `enviar` exige respuestas completas; si falta alguna → `422` indicando cuáles.
 5. Endpoint/ruta pública de compartir (landing que invita a registrarse y responder).
 
 ## Archivos a tocar
 - `app/Http/Controllers/Api/EncuestaController.php`, `.../RespuestaController.php`.
-- `app/Http/Requests/GuardarRespuestaRequest.php`.
+- `app/Http/Requests/GuardarRespuestaRequest.php` — regla `'respuesta' => ['required','integer','min:1','max:5']`.
 - `routes/api.php`.
 
 ## Criterio de "hecho"
@@ -33,6 +33,7 @@ atrás a cambiar respuestas), envíe la encuesta y consulte su estado. Incluir l
 ## Tests
 - `tests/Feature/Encuesta/FlujoEncuestaTest.php` — iniciar, responder, reabrir respuesta, enviar.
 - `tests/Feature/Encuesta/EnviarIncompletaTest.php` — rechazo si faltan respuestas.
+- `tests/Feature/Encuesta/RespuestaInvalidaTest.php` — `422` ante respuestas fuera de rango (`0`, `6`, no numérico).
 
 ## Notas
 - Confirmar con el usuario si tras `enviar` se permite editar respuestas.

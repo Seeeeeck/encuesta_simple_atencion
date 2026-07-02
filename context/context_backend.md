@@ -34,7 +34,8 @@
   **rol** (`usuario` | `admin`, default `usuario`).
 - **encuesta**: id_encuesta, id_usuario (FK), is_ok (bool, default false). 1 por usuario.
 - **pregunta**: id_pregunta, pregunta_texto. Set fijo (seeder).
-- **respuesta**: id_respuesta, id_encuesta (FK), id_pregunta (FK), respuesta. Único (encuesta, pregunta).
+- **respuesta**: id_respuesta, id_encuesta (FK), id_pregunta (FK), respuesta (SMALLINT, 1-5,
+  CHECK). Único (encuesta, pregunta).
 
 Relaciones: Usuario 1—N Encuesta; Encuesta 1—N Respuesta; Pregunta 1—N Respuesta.
 

@@ -38,7 +38,7 @@ digraph modelo_logico {
       <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_respuesta (PK)</FONT></TD></TR>
       <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_encuesta (FK)</FONT></TD></TR>
       <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">id_pregunta (FK)</FONT></TD></TR>
-      <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">respuesta</FONT></TD></TR>
+      <TR><TD BGCOLOR="#efeefb" ALIGN="LEFT"><FONT COLOR="#3a2f7a">respuesta (numero 1-5)</FONT></TD></TR>
     </TABLE>>];
 
   { rank=same; usuario; pregunta; }
